@@ -90,14 +90,14 @@ const roundTo = require('round-to');
             for(let i = 0; i < transactions.length; i++){
                 let currentYear = new Date().getFullYear()
                 if((transactions[i].transactionDate.getMonth()+1) === x.MonthIndex && transactions[i].transactionDate.getFullYear() === currentYear){
-                    selectedMonthBalance.balanceAmount += transactions[i].totalAmount;
+                    selectedMonthBalance.balanceAmount += roundTo.up(transactions[i].totalAmount,2);
                     selectedMonthBalance.transactionArray.push(transactions[i]);
                 }
                 if((transactions[i].transactionDate.getMonth()+1) === x.MonthIndex && transactions[i].totalAmount >= 0 && transactions[i].transactionDate.getFullYear() === currentYear){
-                    selectedMonthBalance.incomeAmount += transactions[i].totalAmount;
+                    selectedMonthBalance.incomeAmount += roundTo.up(transactions[i].totalAmount,2);
                 }
                 if((transactions[i].transactionDate.getMonth()+1) === x.MonthIndex && transactions[i].totalAmount < 0 && transactions[i].transactionDate.getFullYear() === currentYear){
-                    selectedMonthBalance.expenseAmount += transactions[i].totalAmount;
+                    selectedMonthBalance.expenseAmount += roundTo.up(transactions[i].totalAmount,2);
                 }
             }
             selectedMonthBalance.monthName = x.MonthName;
