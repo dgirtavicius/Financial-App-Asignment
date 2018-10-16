@@ -24,4 +24,8 @@ export class MonthlyTransactionsComponent implements OnInit {
     })
   }
 
+  onReload(){
+    window.location.reload()
+  }
+  
 }
