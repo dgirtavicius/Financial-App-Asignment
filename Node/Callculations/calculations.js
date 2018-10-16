@@ -99,8 +99,8 @@ const roundTo = require('round-to');
                 if((transactions[i].transactionDate.getMonth()+1) === x.MonthIndex && transactions[i].totalAmount < 0 && transactions[i].transactionDate.getFullYear() === currentYear){
                     selectedMonthBalance.expenseAmount += transactions[i].totalAmount;
                 }
-                selectedMonthBalance.monthName = x.MonthName;
             }
+            selectedMonthBalance.monthName = x.MonthName;
             return selectedMonthBalance;
         });
         return mapOfTotalPerMonth;
