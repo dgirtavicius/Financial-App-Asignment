@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Month</th>
+      <th scope="col">Income</th>
+      <th scope="col">Expenses</th>
+      <th scope="col">Balance</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let balance of transactionService.monthlyBalances">
+      <td>{{balance.monthName}}</td>
+      <td>{{balance.incomeAmount}}</td>
+      <td>{{balance.expenseAmount}}</td>
+      <td>{{balance.balanceAmount}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

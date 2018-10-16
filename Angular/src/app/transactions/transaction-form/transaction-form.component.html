@@ -1,0 +1,63 @@
+
+<div class="container-fluid mt-4">
+  <h6>Please fill out required fields, marked with (*)</h6>
+  <form #transactionForm="ngForm" (ngSubmit)="onSubmit(transactionForm)">
+      <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="transactionService.selectedTransaction._id">
+      <div class="col-md-3 my-2">
+        <h4>Date</h4>
+        <input type="date" name="transactionDate" #name="ngModel" class="form-control" placeholder="Enter transaction date" [(ngModel)]="transactionService.selectedTransaction.transactionDate">
+      </div>
+      <div class="col-md-3 my-2">
+        <h4>Description *</h4>
+        <textarea name="transactionDescription" #name="ngModel" class="form-control" placeholder="Enter transaction description" rows="3" required [(ngModel)]="transactionService.selectedTransaction.transactionDescription"></textarea>
+      </div>
+      <div class="col-md-2 my-2">
+        <h4>Amount *</h4>
+        <input type="number" min="0" name="transactionAmount" #name="ngModel" class="form-control" placeholder="Enter amount" required [(ngModel)]="transactionService.selectedTransaction.transactionAmount">
+      </div>
+    <div class="col container-fluid">
+      <button type="submit" class="btn btn-outline mr-2 btn-success" [disabled]="!transactionForm.valid" (click)="addIncome()">+ Add Income</button>
+      <button type="submit" class="btn btn-outline mr-2 btn-danger" [disabled]="!transactionForm.valid" (click)="addExpense()">- Add Expense</button>
+    </div>
+
+  </form>
+
+  <div class="container-fluid balance my-2">
+    <h3 class="mr-2">Total Current Balance: </h3>
+    <h3 class="mr-2">{{transactionService.currentBalance}}</h3>
+    <h3>{{'\u20AC'}}</h3>
+  </div>
+
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Transaction Type</th>
+      <th scope="col">Date</th>
+      <th scope="col">Description</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Tax type</th>
+      <th scope="col">Taxes</th>
+      <th scope="col">Edit/Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let trans of transactionService.transactions">
+      <td>{{trans.transactionType}}</td>
+      <td>{{trans.transactionDate | date: 'shortDate'}}</td>
+      <td>{{trans.transactionDescription}}</td>
+      <td>{{trans.totalAmount}}</td>
+      <td>{{trans.taxType}}</td>
+      <td>{{trans.taxAmount}}</td>
+      <td>
+        <button>
+          <span title="Edit" (click)="onEdit(trans)"><i class="far fa-edit"></i></span>
+        </button>
+        /
+        <button href="#">
+          <span title="Delete" (click)="onDelete(trans._id, transactionForm)"><i class="far fa-trash-alt"></i></span>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

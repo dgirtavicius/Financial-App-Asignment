@@ -1,0 +1,20 @@
+Page of mongo db tutorial: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
+---------------------Mongo DB----------------------------------------------------------------------
+1. Download mongo db from: https://www.mongodb.com/download-center?initial=true#community
+2. Launch installer and follow the MongoDB Community Edition installation wizard.
+3. In Windows(C:) create folder with name "data" inside create folder name "db".
+4. Launch provided Start_MongoDB.bat file, if you see "[initandlisten] waiting for connection on port 27017", server has started.
+5. Download and install Mongo Compass from: https://www.mongodb.com/download-center?utm_source=manual&utm_campaign=download-mongodb-navbar-cta&utm_medium=docs#compass
+6. Launch and connect to default provided port. Dont input anything just press connect and you should see 4 directories (admin, config, db, local) of which one will be "db".
+---------------------App----------------------------------------------------------------------------
+1. Open Node folder in terminal and type: nodemon index.js
+2. Open Angular folder in another terminal window and type: ng serve
+3. Wait until both Node and Angular are deployed and open browser, type: http://localhost:4200
+
+Hope everything will run smoothly
+
+Apologies for untidy code.
+
+In Mongo Compass db folder a "transactions" database should be created automatically and all created transactions should be visible in the database after refresh.
+
+
