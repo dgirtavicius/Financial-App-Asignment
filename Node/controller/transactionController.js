@@ -152,7 +152,7 @@ router.put('/:id', (req, res, next) => {
     //Calculate and set tax amount to transaction
     trans.taxAmount = Calculations.getTaxAmount(trans.transactionAmount, Calculations.getTaxPercentage(trans.transactionType));
     //Calculate and set total amount to transaction
-    trans.totalAmount = Calculations.getTotalAmount(trans.transactionAmount, trans.taxAmount);
+    trans.totalAmount = roundTo.up(Calculations.getTotalAmount(trans.transactionAmount, trans.taxAmount),2);
 
     Transaction.findByIdAndUpdate(req.params.id, {$set : trans}, (err, doc) => {
         if(err){
